@@ -102,6 +102,104 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    const logBtn = errorBtns[0];
+    logBtn.addEventListener('click', () => {
+      console.log("Console Log Message");
+    });
+
+    const errorBtn = errorBtns[1];
+    errorBtn.addEventListener('click', () => {
+      console.error("Console Error Message");
+    });
+
+    const countBtn = errorBtns[2];
+    countBtn.addEventListener('click', () => {
+      console.count("Count Button Click");
+    });
+
+    const warnBtn = errorBtns[3];
+    warnBtn.addEventListener('click', () => {
+      console.warn("Console Warn Message");
+    });
+
+    const assertBtn = errorBtns[4];
+    assertBtn.addEventListener('click', () => {
+      let number = 1;
+      let errorMsg = "the number is not 100";
+      console.assert(number === 100, {number, errorMsg});
+    });
+
+    const clearBtn = errorBtns[5];
+    clearBtn.addEventListener('click', () => {
+      console.clear();
+    });
+
+    const dirBtn = errorBtns[6];
+    dirBtn.addEventListener('click', () => {
+      console.dir(document.location);
+    });
+
+    const dirxmlBtn = errorBtns[7];
+    dirxmlBtn.addEventListener('click', () => {
+      console.dirxml(document.location);
+    });
+
+    const gsBtn = errorBtns[8];
+    gsBtn.addEventListener('click', () => {
+      console.group("Console Group Example");
+    });
+
+    const geBtn = errorBtns[9];
+    geBtn.addEventListener('click', () => {
+      console.groupEnd();
+    });
+
+    const tableBtn = errorBtns[10];
+    tableBtn.addEventListener('click', () => {
+      function Item(item, place) {
+        this.item = item;
+        this.place = place;
+      }
+      const choco = new Item('chocolate', 'Target');
+      const handc = new Item('hand cream', 'Target');
+      const kitpt = new Item('kitchen paper towl', 'Uber Eats');
+      console.table([choco, handc, kitpt]);
+    });
+
+    const stBtn = errorBtns[11];
+    stBtn.addEventListener('click', () => {
+      console.time('Timer');
+    });
+
+    const etBtn = errorBtns[12];
+    etBtn.addEventListener('click', () => {
+      console.timeEnd('Timer');
+    });
+
+    const traceBtn = errorBtns[13];
+    traceBtn.addEventListener('click', () => {
+      function outmostLayer() {
+        function middleLayer() {
+          function innerLayer() {
+            console.trace();
+          }
+          innerLayer();
+        }
+        middleLayer();
+      }
+      outmostLayer();
+    });
+
+    const triggerBtn = errorBtns[14];
+    triggerBtn.addEventListener('click', () => {
+      // undefined variable undefinedVar
+      let errorVar = undefinedVar;
+    });
+
+    window.addEventListener('error', () => {
+      console.log("An error happened! See below for details.");
+    });
+    
   </script>
 </body>
 
