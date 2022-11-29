@@ -87,6 +87,17 @@
     </section>
   </main>
 
+
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "8ed11fa469044959993b99cdf004a48e"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+
+    TrackJS.track('Testing TrackJS!');
+  </script>
+                        
   <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -102,6 +113,8 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    // step 2
     const logBtn = errorBtns[0];
     logBtn.addEventListener('click', () => {
       console.log("Console Log Message");
@@ -191,14 +204,49 @@
     });
 
     const triggerBtn = errorBtns[14];
-    triggerBtn.addEventListener('click', () => {
+    function handleTriggerBtnClick() {
       // undefined variable undefinedVar
       let errorVar = undefinedVar;
-    });
+    }
+    triggerBtn.addEventListener('click', handleTriggerBtnClick);
 
-    window.addEventListener('error', () => {
+
+    // step 3 - try/catch/finally
+    let btn = errorBtns;
+    try {
+      // trying to addEventListener to an array of buttons will cause error
+      btn.addEventListener('click', () => {
+        console.log("button click success");
+      });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      console.log("finally, error handled");
+    }
+
+
+    // step 4 - throw, custom error type
+    class NumberOutOfRangeError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "NumberOutOfRangeError";
+      }
+    }
+
+    let num = 1000;
+    try {
+      if (num > 999) {
+        throw new NumberOutOfRangeError("the number is larger than 999");
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      console.log("finally, NumberOutOfRangeError handled");
+    }
+
+    window.onerror = () => {
       console.log("An error happened! See below for details.");
-    });
+    };
     
   </script>
 </body>
